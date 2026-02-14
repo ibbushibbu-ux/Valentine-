@@ -140,6 +140,103 @@ function launchFinal(){
     box.innerHTML = `
         <h2 style="animation:glow 2s infinite alternate;">Upgrade Successful ❤️</h2>
         <img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif" width="220" style="margin-top:15px;border-radius:15px;">
+        
+        <p style="margin-top:20px;">
+        And yes… I may eat a lot.  
+        And maybe I do have a bigger 🍑.  
+        But for the past 4 months,  
+        my favorite part of my day has been talking to you.
+        </p>
+
+        <h2 style="margin-top:15px;">Sadaf, will you be my Valentine? 💖</h2>
+
+        <p style="font-size:14px;opacity:0.8;margin-top:10px;">
+        (P.S. I promise not to burst. At least not before our next meal together.)
+        </p>
+
+        <a href="tel:+918939128268">
+            <button style="
+                margin-top:20px;
+                padding:12px 25px;
+                font-size:16px;
+                border:none;
+                border-radius:25px;
+                background:white;
+                color:#ff4e88;
+                cursor:pointer;">
+                Call Me ❤️
+            </button>
+        </a>
+    `;
+
+    confetti();
+}
+
+function confetti(){
+    for(let i=0;i<80;i++){
+        let div = document.createElement("div");
+        div.style.position="absolute";
+        div.style.width="8px";
+        div.style.height="8px";
+        div.style.background="white";
+        div.style.left=Math.random()*window.innerWidth+"px";
+        div.style.top="-10px";
+        div.style.opacity=Math.random();
+        div.style.animation="fall 3s linear forwards";
+        document.body.appendChild(div);
+    }
+}
+
+const style = document.createElement('style');
+style.innerHTML = `
+@keyframes fall {
+    to { transform: translateY(100vh); opacity:0; }
+}
+@keyframes glow {
+    from { text-shadow:0 0 10px white; }
+    to { text-shadow:0 0 25px white; }
+}`;
+document.head.appendChild(style);
+</script>
+
+</body>
+</html>    yesBtn.id = "yesBtn";
+    yesBtn.onclick = function(){
+        launchFinal();
+    };
+
+    const noBtn = document.createElement("button");
+    noBtn.innerHTML = "Reject Upgrade 🙄";
+    noBtn.id = "noBtn";
+
+    noBtn.onmouseover = moveNo;
+    noBtn.ontouchstart = moveNo;
+    noBtn.onclick = moveNo;
+
+    box.appendChild(yesBtn);
+    box.appendChild(noBtn);
+}
+
+function moveNo(){
+    const noBtn = document.getElementById("noBtn");
+    const x = Math.random() * (window.innerWidth - 120);
+    const y = Math.random() * (window.innerHeight - 60);
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+}
+
+function launchFinal(){
+    const box = document.getElementById("box");
+    const music = document.getElementById("music");
+
+    music.play();
+
+    document.body.style.background = "linear-gradient(135deg,#ff4e88,#ff99ac)";
+    document.body.style.color = "white";
+
+    box.innerHTML = `
+        <h2 style="animation:glow 2s infinite alternate;">Upgrade Successful ❤️</h2>
+        <img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif" width="220" style="margin-top:15px;border-radius:15px;">
         <p style="margin-top:20px;">
         And yes… I may eat a lot.  
         And maybe I do have a bigger 🍑.  
@@ -184,3 +281,4 @@ document.head.appendChild(style);
 
 </body>
 </html>
+
