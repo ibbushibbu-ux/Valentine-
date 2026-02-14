@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Be My Valentine?</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: pink;
+            margin-top: 100px;
+        }
+        #noBtn {
+            position: absolute;
+        }
+        button {
+            padding: 15px 25px;
+            font-size: 18px;
+            margin: 20px;
+            cursor: pointer;
+        }
+        #gif {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Will you be my Valentine? 💖</h1>
+
+    <button onclick="showGif()">Yes 💕</button>
+    <button id="noBtn" onmouseover="moveButton()">No 😜</button>
+
+    <div id="gif">
+        <img src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif" width="300">
+        <h2>Yayyyyy!! 😍💘</h2>
+    </div>
+
+    <script>
+        function moveButton() {
+            var button = document.getElementById("noBtn");
+            var x = Math.random() * window.innerWidth;
+            var y = Math.random() * window.innerHeight;
+            button.style.left = x + "px";
+            button.style.top = y + "px";
+        }
+
+        function showGif() {
+            document.getElementById("gif").style.display = "block";
+        }
+    </script>
+
+</body>
+</html>
