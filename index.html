@@ -1,3 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Relationship Audit Report</title>
+
+<style>
+body {
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,sans-serif;
+    background:#0f0f0f;
+    color:#00ff88;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    text-align:center;
+    padding:20px;
+    overflow:hidden;
+    transition:background 1s ease, color 1s ease;
+}
+
+#box {
+    max-width:420px;
+}
+
+button {
+    margin:15px 10px;
+    padding:12px 25px;
+    font-size:16px;
+    border:none;
+    border-radius:25px;
+    cursor:pointer;
+}
+
+#yesBtn {
+    background:#00ff88;
+    color:black;
+}
+
+#noBtn {
+    background:#ff4d4d;
+    color:white;
+    position:absolute;
+}
+</style>
+</head>
+
+<body>
+
+<div id="box">
+    <h2 id="text">Initializing Relationship Audit...</h2>
+    <button id="nextBtn" onclick="nextStep()">Continue</button>
+</div>
+
+<audio id="music" loop>
+<source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" type="audio/mpeg">
+</audio>
+
 <script>
 let step = 0;
 
@@ -52,9 +111,10 @@ function showFinal(){
     const noBtn = document.createElement("button");
     noBtn.innerHTML = "Reject Upgrade 🙄";
     noBtn.id = "noBtn";
-    noBtn.style.position = "absolute";
+
     noBtn.onmouseover = moveNo;
     noBtn.ontouchstart = moveNo;
+    noBtn.onclick = moveNo;
 
     box.appendChild(yesBtn);
     box.appendChild(noBtn);
@@ -79,7 +139,7 @@ function launchFinal(){
 
     box.innerHTML = `
         <h2 style="animation:glow 2s infinite alternate;">Upgrade Successful ❤️</h2>
-        <img src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif" width="220" style="margin-top:15px;border-radius:15px;">
+        <img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif" width="220" style="margin-top:15px;border-radius:15px;">
         <p style="margin-top:20px;">
         And yes… I may eat a lot.  
         And maybe I do have a bigger 🍑.  
@@ -121,3 +181,6 @@ style.innerHTML = `
 }`;
 document.head.appendChild(style);
 </script>
+
+</body>
+</html>
