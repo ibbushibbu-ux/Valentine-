@@ -2,135 +2,116 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Important Question ❤️</title>
+<title>Relationship Audit Report</title>
 
 <style>
 body {
     margin:0;
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    background: linear-gradient(135deg, #ff4e88, #ff99ac);
+    font-family:-apple-system,BlinkMacSystemFont,sans-serif;
+    background:#111;
+    color:#00ff88;
     display:flex;
     justify-content:center;
     align-items:center;
     height:100vh;
     text-align:center;
-    overflow:hidden;
+    padding:20px;
 }
 
-#container {
-    color:white;
+#box {
+    max-width:400px;
 }
 
 button {
-    padding:15px 30px;
-    font-size:18px;
+    margin-top:20px;
+    padding:12px 25px;
+    font-size:16px;
     border:none;
-    border-radius:30px;
-    margin:15px;
+    border-radius:25px;
     cursor:pointer;
 }
 
 #yesBtn {
-    background:white;
-    color:#ff4e88;
+    background:#00ff88;
+    color:black;
 }
 
 #noBtn {
-    background:black;
+    background:#ff4d4d;
     color:white;
-    position:absolute;
-}
-
-#gif, #message {
-    display:none;
-    margin-top:20px;
-}
-
-#loader {
-    position:absolute;
-    background:black;
-    color:white;
-    width:100%;
-    height:100%;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:22px;
-    z-index:10;
 }
 </style>
 </head>
 
 <body>
 
-<div id="loader">Loading something important for you... ❤️</div>
-
-<div id="container" style="display:none;">
-    <h1>Will you be my Valentine, Sadaf? 💖</h1>
-
-    <button id="yesBtn" onclick="accept()">Yes 😍</button>
-    <button id="noBtn" ontouchstart="moveNo()" onmouseover="moveNo()">No 🙃</button>
-
-    <div id="gif">
-        <img src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif" width="250">
-    </div>
-
-    <div id="message">
-        <h2>You just made me the happiest person alive 😭❤️</h2>
-    </div>
+<div id="box">
+    <h2 id="text">Initializing Relationship Audit...</h2>
+    <button id="nextBtn" onclick="nextStep()">Continue</button>
 </div>
 
-<audio id="music" loop>
-<source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-</audio>
-
 <script>
-setTimeout(function(){
-    document.getElementById("loader").style.display="none";
-    document.getElementById("container").style.display="block";
-}, 2500);
+let step = 0;
 
-function moveNo(){
-    var btn = document.getElementById("noBtn");
-    var x = Math.random() * (window.innerWidth - 100);
-    var y = Math.random() * (window.innerHeight - 50);
-    btn.style.left = x + "px";
-    btn.style.top = y + "px";
-}
+function nextStep(){
+    const text = document.getElementById("text");
 
-function accept(){
-    document.getElementById("gif").style.display="block";
-    document.getElementById("message").style.display="block";
+    step++;
 
-    var audio = document.getElementById("music");
-    audio.play();
-
-    confetti();
-}
-
-function confetti(){
-    for(let i=0;i<80;i++){
-        let div = document.createElement("div");
-        div.style.position="absolute";
-        div.style.width="8px";
-        div.style.height="8px";
-        div.style.background="white";
-        div.style.left=Math.random()*window.innerWidth+"px";
-        div.style.top="-10px";
-        div.style.animation="fall 3s linear forwards";
-        document.body.appendChild(div);
+    if(step === 1){
+        text.innerHTML = "Analyzing 4 months of excessive talking...";
+    }
+    else if(step === 2){
+        text.innerHTML = "Detected: Dangerous levels of teasing about food intake.";
+    }
+    else if(step === 3){
+        text.innerHTML = "Warning: Subject claims boyfriend has bigger 🍑 than her.";
+    }
+    else if(step === 4){
+        text.innerHTML = "System note: He may burst one day due to eating too much.";
+    }
+    else if(step === 5){
+        text.innerHTML = "However...";
+    }
+    else if(step === 6){
+        text.innerHTML = "Detected: Laughing too much together.";
+    }
+    else if(step === 7){
+        text.innerHTML = "Detected: Daily talking addiction.";
+    }
+    else if(step === 8){
+        text.innerHTML = "Detected: Slightly obvious feelings developing.";
+    }
+    else if(step === 9){
+        text.innerHTML = "Final Recommendation:";
+    }
+    else if(step === 10){
+        text.innerHTML = "Upgrade relationship status to: Valentine Mode 💖";
+        document.getElementById("nextBtn").style.display = "none";
+        showFinal();
     }
 }
 
-const style = document.createElement('style');
-style.innerHTML = `
-@keyframes fall {
-    to {
-        transform: translateY(100vh);
-        opacity:0;
-    }
-}`;
-document.head.appendChild(style);
+function showFinal(){
+    const box = document.getElementById("box");
+
+    const yesBtn = document.createElement("button");
+    yesBtn.innerHTML = "Approve Upgrade 😌";
+    yesBtn.id = "yesBtn";
+    yesBtn.onclick = function(){
+        box.innerHTML = "<h2>Upgrade Successful ❤️</h2><p>And yes… I may eat a lot. But I only want to share my snacks with you.</p>";
+    };
+
+    const noBtn = document.createElement("button");
+    noBtn.innerHTML = "Reject Upgrade 🙄";
+    noBtn.id = "noBtn";
+    noBtn.onclick = function(){
+        box.innerHTML = "<h2>Error: Rejection not accepted.</h2><p>This system runs on mutual teasing and chaos.</p>";
+    };
+
+    box.appendChild(yesBtn);
+    box.appendChild(noBtn);
+}
 </script>
 
 </body>
